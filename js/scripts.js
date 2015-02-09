@@ -15,11 +15,16 @@ $(document).ready(function() {
   $("form#leap-year").submit(function(event) {
     var year = parseInt($("input#year").val());
     var result = leapYear(year);
+    var setNotClass = function() {
+      if (!result) {
+        $(".not").text("not");
+      } else {
+        $(".not").text("");
+      }
+    };
 
     $(".year").text(year);
-    if (!result) {
-      $(".not").text("not");
-    }
+    setNotClass();
 
     $("#result").show();
     event.preventDefault();
